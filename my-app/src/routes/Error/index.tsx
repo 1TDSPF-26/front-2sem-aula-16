@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default function Error() {
   
     document.title = "Error 404";
@@ -10,6 +11,8 @@ export default function Error() {
   );
 =======
 
+=======
+>>>>>>> feature/exemplo-rm560871
 export default function Error() {
     // Para alterar o título da página:
     document.title = "Erro 404"
