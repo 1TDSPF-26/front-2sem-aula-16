@@ -11,7 +11,7 @@ export default function Produtos() {
 
   const [produtos, setProdutos] = useState<TipoProduto[]>([]);
 
-  useEffect(() => {
+  useEffect(() => { 
     const carregaProdutos = async () => {
       try {
         const response = await fetch("http://localhost:3001/produtos");
