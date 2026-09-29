@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default function Produtos() {
-    //Para alternar o título da página
-    document.title = "Produtos"
-    return (
-    <div>Produtos</div>
-    )
-=======
 import { useEffect, useState } from "react"
 import type { TipoProduto } from "../../types/types";
 
@@ -49,5 +39,4 @@ export default function Produtos() {
         </main>
     )
 
->>>>>>> feature/exemplo-rm570325
 }

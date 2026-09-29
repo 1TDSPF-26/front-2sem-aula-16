@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default function Home() {
-  //Para alternar o título da página
-    document.title = "Home";
-    return <div>Home</div>;
-=======
 
 import { useEffect, useState } from "react";
 
@@ -76,5 +68,4 @@ export default function Home() {
     </main>
   );
 
->>>>>>> feature/exemplo-rm570325
 }

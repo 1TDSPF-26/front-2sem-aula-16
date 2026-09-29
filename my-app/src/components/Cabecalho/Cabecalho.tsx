@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-export default function Cabecalho() {
-  return (
-    <header>
-      <h1>Minha página!</h1>
-      <nav>
-        <ul>
-            <li>Item 1</li>
-        </ul>
-      </nav>
-    </header>
-  );
-}
-=======
 import Menu from "../Menu/Menu";
 
 export default function Cabecalho() {
@@ -23,4 +9,3 @@ export default function Cabecalho() {
   )
 }
 
->>>>>>> feature/exemplo-rm570325

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import ligada from  "../../img/lampada.png";
-=======
 import ligada from  "../../img/lampada-ligada.png";
->>>>>>> feature/exemplo-rm570325
 import desligada from  "../../img/lampada-apagada.png";
 import { useState } from "react";
 
@@ -23,8 +19,4 @@ export default function LigaDesliga() {
         </button>
     </div>
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/exemplo-rm570325
