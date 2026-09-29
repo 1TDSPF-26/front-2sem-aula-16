@@ -4,4 +4,6 @@ export type TipoProduto = {
     preco: number;
     descricao: string;
     avatar: string;
+
 }
+
