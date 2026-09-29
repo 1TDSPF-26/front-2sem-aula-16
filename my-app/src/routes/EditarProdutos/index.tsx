@@ -1,66 +1,67 @@
 import { useParams } from "react-router";
+import type { tipoProduto } from "../../Types/types";
+import { useEffect, useState } from "react";
 
 
-export const listaProdutos = [
-  {
-    id: 1,
-    nome: "Headset Gamer Sem Fio",
-    preco: 299.90,
-    descricao: "Áudio espacial 7.1, microfone com cancelamento de ruído e bateria de até 20 horas.",
-    avatar: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&auto=format&fit=crop&q=80"
-  },
-  {
-    id: 2,
-    nome: "Teclado Mecânico RGB",
-    preco: 249.00,
-    descricao: "Switches azuis táteis, layout compacto 60% e iluminação RGB customizável.",
-    avatar: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&auto=format&fit=crop&q=80"
-  },
-  {
-    id: 3,
-    nome: "Smartwatch Fitness",
-    preco: 189.50,
-    descricao: "Monitoramento de frequência cardíaca, contador de passos e resistência à água 5ATM.",
-    avatar: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&auto=format&fit=crop&q=80"
-  },
-  {
-    id: 4,
-    nome: "Câmera Instantânea Vintage",
-    preco: 420.00,
-    descricao: "Impressão de fotos na hora com ajuste automático de exposição e lente macro integrada.",
-    avatar: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300&auto=format&fit=crop&q=80"
-  },
-  {
-    id: 5,
-    nome: "Mochila Ergonômica para Notebook",
-    preco: 159.90,
-    descricao: "Compartimento acolchoado até 15.6'', tecido impermeável e entrada USB externa.",
-    avatar: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&auto=format&fit=crop&q=80"
-  }
-]
+
 
 export default function EditarProdutos() {
   // Para alterar o título da página:
   document.title = "Editar Produtos";
 
   const { id } = useParams<string>();
+  const [produto, setProdutos] = useState<tipoProduto>({ id: "", nome: "", preco: 0, descricao: "", avatar: "" });
 
-  const produto = listaProdutos.find((p)=> p.id === Number(id));
+  useEffect(() => {
+
+
+    const carregarProduto = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/produtos/${id}`);
+        if (!response.ok) {
+          throw new Error("Erro na listagem dos Produtos");
+        }
+        const data: tipoProduto = await response.json();
+
+        setProdutos(data);
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    carregarProduto();
+
+  }, [])
 
   return (
     <main>
       <h2>Editar Produtos Lindos</h2>
-          {produto ? (
+      <h1>{id}</h1>
+      <div>
+        <form >
+          <fieldset>
+            <legend>Dados do Produto:</legend>
             <div>
-              <h3>{produto.nome}</h3>
-              <p>{produto.descricao}</p>
-              <p>Preço: R$ {produto.preco}</p>
-             <figure>
-              <img src={produto.avatar} alt={produto.nome} />
-                <figcaption>{produto.nome}</figcaption>
-             </figure>
+              <label htmlFor="nome">Nome Produto</label>
+              <input type="text" name="nome" id="nome" value={produto.nome} onChange={(e) => setProdutos({ ...produto, nome: e.target.value })} />
             </div>
-          ): <h3>Produto não encontrado!</h3>} 
+            <div>
+              <label htmlFor="preco">Preço Produto</label>
+              <input type="number" step={0.1} name="preco" id="nome" value={produto.preco} onChange={(e) => setProdutos({ ...produto, preco:parseFloat( e.target.value )})} />
+            </div>
+            <div>
+              <label htmlFor="descricao">Descricao Produto</label>
+              <input type="text" name="descricao" id="nome" value={produto.descricao} onChange={(e) => setProdutos({ ...produto, descricao: e.target.value })} />
+            </div>
+            <div>
+              <label htmlFor="avatar">Avatar Produto</label>
+              <figure>
+                <img src={produto.avatar} alt={produto.nome} />
+              </figure>
+            </div>
+          </fieldset>
+        </form>
+      </div>
 
     </main>
   );
