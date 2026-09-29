@@ -13,6 +13,10 @@
   "dependencies": {
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+<<<<<<< HEAD
+=======
+    "react-icons": "^5.7.0",
+>>>>>>> feature/exemplo-pf0670
     "react-router": "^8.3.1"
   },
   "devDependencies": {
@@ -20,6 +24,10 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
+<<<<<<< HEAD
+=======
+    "json-server": "^1.0.0-beta.15",
+>>>>>>> feature/exemplo-pf0670
     "oxlint": "^1.79.0",
     "typescript": "~6.0.2",
     "vite": "^8.2.2"
