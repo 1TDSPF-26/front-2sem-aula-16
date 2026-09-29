@@ -41,27 +41,33 @@ export default function EditarProdutos() {
         <form>
           <fieldset>
             <legend>Dados do produto</legend>
+
             <div>
               <label htmlFor="nome">Nome do produto</label>
               <input type="text" name="nome" id="nome" value={produto.nome} onChange={(e) => setProduto({ ...produto, nome: e.target.value })} />
             </div>
+
             <div>
               <label htmlFor="preco">Preço do produto</label>
               <input type="number" step={0.1} name="preco" id="preco" value={produto.preco} onChange={(e) => setProduto({ ...produto, preco: parseFloat(e.target.value) })} />
             </div>
+
             <div>
               <label htmlFor="descricao">Descrição do produto</label>
               <input type="text" name="descricao" id="descricao" value={produto.descricao} onChange={(e) => setProduto({ ...produto, descricao: e.target.value })} />
             </div>
+
             <div>
               <label htmlFor="avatar">Avatar do produto</label>
               <figure>
                 <img src={produto.avatar} alt={produto.nome} />
               </figure>
             </div>
+
             <div>
               <button type="button">ATUALIZAR</button>
             </div>
+            
           </fieldset>
         </form>
 
