@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react-dom";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import type { TipoProduto } from "../../types/types";
 
 export default function EditarProdutos() {
