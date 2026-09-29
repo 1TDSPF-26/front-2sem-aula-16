@@ -1,39 +1,71 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router"
-
-///criando lista ficticia de produtos
-const listaProdutos = [   
-  { id: 1, nome: "Headset Gamer Sem Fio", preco: 299.90,descricao: "Áudio espacial 7.1, microfone com cancelamento de ruído e bateria de até 20 horas." },
-
-  { id: 2, nome: "Teclado Mecânico RGB", preco: 249.00,descricao: "Switches azuis táteis, layout compacto 60% e iluminação RGB customizável."},
-
-  { id: 3, nome: "Smartwatch Fitness", preco: 189.50,descricao: "Monitoramento de frequência cardíaca, contador de passos e resistência à água 5ATM."},
-
-  { id: 4, nome: "Câmera Instantânea Vintage", preco: 420.00, descricao: "Impressão de fotos na hora com ajuste automático de exposição e lente macro integrada."}, 
-
-  { id: 5, nome: "Mochila Ergonômica para Notebook",preco: 159.90, descricao: "Compartimento acolchoado até 15.6'', tecido impermeável e entrada USB externa."} 
-]
-
+import type { tipoProduto } from "../../types/types";
 
 export default function EditarProdutos() {
-    //para alterar o título da página
-    document.title = "Editar Produtos"
+  //para alterar o título da página
+  document.title = "Editar Produtos"
 
-    //receber o parâmetro de id 
-    const { id } = useParams<string>();
+  //receber o parâmetro de id 
+  const { id } = useParams<{ id: string }>();
 
-    const produto = listaProdutos.find((p)=> p.id === Number(id))
-    
+  const [produto, setProduto] = useState<tipoProduto>({ id: "", nome: "", preco: 0, descricao: "", avatar: "" });
+
+  useEffect(() => {
+    const carregarProduto = async () => {
+
+      try {
+        const response = await fetch(`http://localhost:3001/produtos/${id}`);
+
+        if (!response.ok) {
+          throw new Error(`Erro na listagem dos produtos: ${response.status} - ${response.statusText}`);
+        }
+
+        const data: tipoProduto = await response.json();
+        setProduto(data);
+
+      } catch (error) {
+        console.error(error);
+      }
+
+    }
+    carregarProduto();
+
+  }, []);
+
   return (
     <main>
-        <h2>Editar Produtos</h2>
-        {produto ? (
-          <div>
-            <h3>{produto.nome}</h3>
-            <p>{produto.descricao}</p>
-            <p>Preço: {produto.preco}</p>
-          </div>
-        ): <h3>Produto não encontrado!</h3> }
+      <h2>Editar Produtos</h2>
+      <div>
 
+        <form>
+          <fieldset>
+            <legend>Dados do produto</legend>
+            <div>
+              <label htmlFor="nome">Nome do produto</label>
+              <input type="text" name="nome" id="nome" value={produto.nome} onChange={(e) => setProduto({ ...produto, nome: e.target.value })} />
+            </div>
+            <div>
+              <label htmlFor="preco">Preço do produto</label>
+              <input type="number" step={0.1} name="preco" id="preco" value={produto.preco} onChange={(e) => setProduto({ ...produto, preco: parseFloat(e.target.value) })} />
+            </div>
+            <div>
+              <label htmlFor="descricao">Descrição do produto</label>
+              <input type="text" name="descricao" id="descricao" value={produto.descricao} onChange={(e) => setProduto({ ...produto, descricao: e.target.value })} />
+            </div>
+            <div>
+              <label htmlFor="avatar">Avatar do produto</label>
+              <figure>
+                <img src={produto.avatar} alt={produto.nome} />
+              </figure>
+            </div>
+            <div>
+              <button type="button">ATUALIZAR</button>
+            </div>
+          </fieldset>
+        </form>
+
+      </div>
     </main>
   )
 }
