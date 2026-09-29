@@ -1,12 +1,26 @@
+<<<<<<< HEAD
 import imgQuadrado from "../../img/lampada.png";
+=======
+import { useState } from "react";
+import imgQuadrado from "../../img/quadrado.png";
+import LigaDesliga from "../LigaDesliga/LigaDesliga";
+import VerDataNasc from "../VerDataNasc/VerDataNasc";
+>>>>>>> feature/exemplo-pf0670
 
 export default function Conteudo() {
   let numeroComum = 0;
 
   //Estado do React
+<<<<<<< HEAD
   const [numeroState, setNumeroState] = useState(0);
 
   function aumentaVariavelComum() {
+=======
+  
+  const [mostraSection, setMostraSection] = useState(true);
+
+  function aumentaVariavelComun() {
+>>>>>>> feature/exemplo-pf0670
     numeroComum = numeroComum + 1;
 
     //O valor muda e aparece no console
@@ -14,6 +28,7 @@ export default function Conteudo() {
     //Más não aparecerá na página
   }
 
+<<<<<<< HEAD
   function aumentarUseState() {
     //O React altera o estado e renderiza novamente a página/componente.
     setNumeroState((valorAtual: number) => valorAtual + 1);
@@ -33,6 +48,21 @@ export default function Conteudo() {
         <button onClick={aumentarUseState}>Aumentar o valor do state</button>
       </div>
 
+=======
+  function verSection() {
+    //O React altera o estado e renderiza novamente a página/componente.
+    
+    
+    setMostraSection(!mostraSection);
+  }
+  
+  return (
+    <main>
+      <section>
+        <LigaDesliga />
+        <VerDataNasc/>
+      </section>
+>>>>>>> feature/exemplo-pf0670
       <section>
         <h2>Conteúdo</h2>
         <p>
@@ -59,13 +89,18 @@ export default function Conteudo() {
           <figcaption>Imagem de exemplo 400x400px</figcaption>
         </figure>
       </section>
+<<<<<<< HEAD
       <section>
+=======
+      <section style={{"display": mostraSection ? "block" : "none"}}>
+>>>>>>> feature/exemplo-pf0670
         <h2>Imagem com referência interna estática</h2>
         <figure>
           <img src="/image/lampada.png" alt="Lampada de Desenho." />
           <figcaption>Imagem de exemplo estática - Lâmpada</figcaption>
         </figure>
       </section>
+<<<<<<< HEAD
     </main>
   );
 }
@@ -73,3 +108,9 @@ function useState(_arg0: number): [any, any] {
     throw new Error("Function not implemented.");
 }
 
+=======
+        <button onClick={verSection}>{mostraSection ? "Ocultar" : "Mostrar"}</button>
+    </main>
+  );
+}
+>>>>>>> feature/exemplo-pf0670
