@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default function EditarProdutos() {
-    document.title = "Editar Produtos"
-  return (
-    <main>
-        <h2>Editar Produtos</h2>
-    </main>
-  )
-=======
 import { useParams } from "react-router";
 import Produtos from "../Produtos";
 
@@ -57,24 +46,23 @@ export default function EditarProdutos() {
 
   const { id } = useParams<string>();
 
-  const produto = listaProdutos.find((p)=> p.id === Number(id));
+  const produto = listaProdutos.find((p) => p.id === Number(id));
 
   return (
     <main>
       <h2>Editar Produtos Lindos</h2>
-          {produto ? (
-            <div>
-              <h3>{produto.nome}</h3>
-              <p>{produto.descricao}</p>
-              <p>Preço: R$ {produto.preco}</p>
-             <figure>
-              <img src={produto.avatar} alt={produto.nome} />
-                <figcaption>{produto.nome}</figcaption>
-             </figure>
-            </div>
-          ): <h3>Produto não encontrado!</h3>} 
+      {produto ? (
+        <div>
+          <h3>{produto.nome}</h3>
+          <p>{produto.descricao}</p>
+          <p>Preço: R$ {produto.preco}</p>
+          <figure>
+            <img src={produto.avatar} alt={produto.nome} />
+            <figcaption>{produto.nome}</figcaption>
+          </figure>
+        </div>
+      ) : <h3>Produto não encontrado!</h3>}
 
     </main>
   );
->>>>>>> feature/exemplo-pf0670
 }
