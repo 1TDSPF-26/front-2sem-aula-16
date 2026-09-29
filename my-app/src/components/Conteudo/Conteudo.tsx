@@ -7,7 +7,7 @@ export default function Conteudo() {
   let numeroComum = 0;
 
   //Estado do React
-
+  
   const [mostraSection, setMostraSection] = useState(true);
 
   function aumentaVariavelComun() {
@@ -20,16 +20,16 @@ export default function Conteudo() {
 
   function verSection() {
     //O React altera o estado e renderiza novamente a página/componente.
-
-
+    
+    
     setMostraSection(!mostraSection);
   }
-
+  
   return (
     <main>
       <section>
         <LigaDesliga />
-        <VerDataNasc />
+        <VerDataNasc/>
       </section>
       <section>
         <h2>Conteúdo</h2>
@@ -57,14 +57,14 @@ export default function Conteudo() {
           <figcaption>Imagem de exemplo 400x400px</figcaption>
         </figure>
       </section>
-      <section style={{ "display": mostraSection ? "block" : "none" }}>
+      <section style={{"display": mostraSection ? "block" : "none"}}>
         <h2>Imagem com referência interna estática</h2>
         <figure>
           <img src="/image/lampada.png" alt="Lampada de Desenho." />
           <figcaption>Imagem de exemplo estática - Lâmpada</figcaption>
         </figure>
       </section>
-      <button onClick={verSection}>{mostraSection ? "Ocultar" : "Mostrar"}</button>
+        <button onClick={verSection}>{mostraSection ? "Ocultar" : "Mostrar"}</button>
     </main>
   );
 }

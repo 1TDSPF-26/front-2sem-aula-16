@@ -1,12 +1,11 @@
 
 export default function Error() {
-
-
-// para alterar o titulo d apágina
-document.title = 'Error'
-
+  // Para alterar o título da página:
+  document.title = "Erro 404"
 
   return (
-    <div>Error</div>
+    <main>
+      <h2>404 - Página não encontrada</h2>
+    </main>
   )
 }
