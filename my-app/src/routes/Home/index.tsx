@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 type TipoUsuarioGit = {
@@ -56,7 +55,6 @@ export default function Home() {
   return (
     <main>
       <h2>Home</h2>
-
       <div>
         <ul>
             {usuarios.map((u,i)=>(
@@ -67,5 +65,4 @@ export default function Home() {
 
     </main>
   );
-
 }
