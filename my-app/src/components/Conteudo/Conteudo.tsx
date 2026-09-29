@@ -1,11 +1,22 @@
 import { useState } from "react";
 import imgQuadrado from "../../img/quadrado.png";
+<<<<<<< HEAD
+import LigaDesliga from "../LigaDesliga/LigaDesliga.tsx";
+=======
+import LigaDesliga from "../LigaDesliga/LigaDesliga";
+>>>>>>> feature/exemplo-rm570325
+import VerDataNasc from "../VerDataNasc/VerDataNasc";
 
 export default function Conteudo() {
   let numeroComum = 0;
 
   //Estado do React
-  const [numeroState, setNumeroState] = useState(0);
+<<<<<<< HEAD
+
+=======
+  
+>>>>>>> feature/exemplo-rm570325
+  const [mostraSection, setMostraSection] = useState(true);
 
   function aumentaVariavelComun() {
     numeroComum = numeroComum + 1;
@@ -15,25 +26,30 @@ export default function Conteudo() {
     //Más não aparecerá na página
   }
 
-  function aumentarUseState() {
+  function verSection() {
     //O React altera o estado e renderiza novamente a página/componente.
-    setNumeroState((valorAtual) => valorAtual + 1);
-    console.log("Valor do estado:", numeroState);
+<<<<<<< HEAD
+
+    setMostraSection(!mostraSection);
   }
 
+=======
+    
+    
+    setMostraSection(!mostraSection);
+  }
+  
+>>>>>>> feature/exemplo-rm570325
   return (
     <main>
-      <div>
-        <h2>Exemplo de variável comum</h2>
-          <p>Variavel Comum:{numeroComum}</p>
-          <button onClick={aumentaVariavelComun}>Aumentar Variavel Comum</button>
-      </div>
-      <div>
-        <h2>Exemplo de UseState</h2>
-        <p>Valor do state: {numeroState}</p>
-        <button onClick={aumentarUseState}>Aumentar o valor do state</button>
-      </div>
-
+      <section>
+        <LigaDesliga />
+<<<<<<< HEAD
+        <VerDataNasc />
+=======
+        <VerDataNasc/>
+>>>>>>> feature/exemplo-rm570325
+      </section>
       <section>
         <h2>Conteúdo</h2>
         <p>
@@ -60,13 +76,24 @@ export default function Conteudo() {
           <figcaption>Imagem de exemplo 400x400px</figcaption>
         </figure>
       </section>
-      <section>
+<<<<<<< HEAD
+      <section style={{ display: mostraSection ? "block" : "none" }}>
+=======
+      <section style={{"display": mostraSection ? "block" : "none"}}>
+>>>>>>> feature/exemplo-rm570325
         <h2>Imagem com referência interna estática</h2>
         <figure>
           <img src="/image/lampada.png" alt="Lampada de Desenho." />
           <figcaption>Imagem de exemplo estática - Lâmpada</figcaption>
         </figure>
       </section>
+<<<<<<< HEAD
+      <button onClick={verSection}>
+        {mostraSection ? "Ocultar" : "Mostrar"}
+      </button>
+=======
+        <button onClick={verSection}>{mostraSection ? "Ocultar" : "Mostrar"}</button>
+>>>>>>> feature/exemplo-rm570325
     </main>
   );
 }
