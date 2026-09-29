@@ -1,50 +1,70 @@
-import { useState } from "react"
-import imagem2 from "../../img/quadrado.png"
+import { useState } from "react";
+import imgQuadrado from "../../img/quadrado.png";
+import LigaDesliga from "../LigaDesliga/LigaDesliga";
+import VerDataNasc from "../VerDataNasc/VerDataNasc";
 
-export default function Conteudo(){
-    let numero = 0;
+export default function Conteudo() {
+  let numeroComum = 0;
 
-    const [numeroState, setNumeroState] = useState(0);
+  //Estado do React
+  
+  const [mostraSection, setMostraSection] = useState(true);
 
-    function aumentaNumero(){
-        numero = numero + 1;
-        console.log(numero)
-    }
+  function aumentaVariavelComun() {
+    numeroComum = numeroComum + 1;
 
-    function aumentarUseState(){
-        setNumeroState((valorAtual)=> valorAtual + 1)
-        console.log(numeroState)
-    }
-    return(
-        <main>
+    //O valor muda e aparece no console
+    console.log("Variavel comum:", numeroComum);
+    //Más não aparecerá na página
+  }
 
-            <div>
-                <h2>exemplo variavel comum</h2>
-                <p>variavel comum: {numero}</p>
-                <button onClick={aumentaNumero}>aumenntar variavel comum</button>
-            </div>
-            <div>
-                <h2>exemplo de useState</h2>
-                <p>valor do state: {numeroState}</p>
-                <button onClick={aumentarUseState}>aumentar o valor do state</button>
-            </div>
-
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae rerum repudiandae itaque repellendus nisi, voluptates ex nihil, magnam iusto facere rem, nulla dolor laudantium aliquid? Dolores eveniet molestiae eligendi excepturi quis repellat fugit necessitatibus ipsa. Sapiente sunt soluta eveniet sequi inventore quos modi, quas rerum cum illo excepturi iste aspernatur.</p>
-            <section>
-                <h2>Imagem com link externo</h2>
-                <figure><img src="https://placehold.co/600x400/FFFFF0/000000/png" alt="exemplo de imagem" />
-                <figcaption>exemplo de imagem</figcaption></figure>
-            </section>
-            <section>
-                <h2>imagem com link externo</h2>
-                <img src={imagem2} alt="imagem exemplo link externo" />
-                <figcaption>imagem exemplo link externo</figcaption>
-            </section>
-            <section>
-                <h2>imagem exemplo com referencia estatica interna</h2>
-                <img src="/image/image.png" alt="imagem lampada" />
-                <figcaption>imagem lampada</figcaption>
-            </section>
-        </main>
-    )
+  function verSection() {
+    //O React altera o estado e renderiza novamente a página/componente.
+    
+    
+    setMostraSection(!mostraSection);
+  }
+  
+  return (
+    <main>
+      <section>
+        <LigaDesliga />
+        <VerDataNasc/>
+      </section>
+      <section>
+        <h2>Conteúdo</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero
+          perspiciatis expedita beatae, at tempora praesentium nihil fuga illum
+          aut, maiores consequuntur porro repellendus sit laudantium, nemo
+          explicabo modi molestiae ipsa?
+        </p>
+      </section>
+      <section>
+        <h2>Imagem com link externo</h2>
+        <figure>
+          <img
+            src="https://placehold.co/600x400/e1e1e1/000000/png"
+            alt="Imagem de exemplo de 600x400px"
+          />
+          <figcaption>Imagem de exemplo de 600x400px</figcaption>
+        </figure>
+      </section>
+      <section>
+        <h2>Imagem com referência interna</h2>
+        <figure>
+          <img src={imgQuadrado} alt="Imagem quadrada 400x400px" />
+          <figcaption>Imagem de exemplo 400x400px</figcaption>
+        </figure>
+      </section>
+      <section style={{"display": mostraSection ? "block" : "none"}}>
+        <h2>Imagem com referência interna estática</h2>
+        <figure>
+          <img src="/image/lampada.png" alt="Lampada de Desenho." />
+          <figcaption>Imagem de exemplo estática - Lâmpada</figcaption>
+        </figure>
+      </section>
+        <button onClick={verSection}>{mostraSection ? "Ocultar" : "Mostrar"}</button>
+    </main>
+  );
 }
